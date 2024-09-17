@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Atividade para nota DJW-2
+        </title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <script src="scripts/Pad.js"></script>
+        <script src="scripts/Bola.js"></script>
+        <script src="scripts/Cpu.js"></script>
+        <script src="scripts/Placar.js"></script>
+        <script src="scripts/VerifyWinner.js"></script>
+    </head>
+    <header>
+        Pong
+    </header>
+    <body>
+        <div id="grade_jogo">
+            <canvas>
+                
+            </canvas>
+        </div>
+        <button id="botao1" onclick="bola.startGame()">
+            Iniciar jogo
+        </button>
+        <button id="botao2" onclick="bola.stopGame()">
+            Resetar jogo
+        </button>
+        <script type="text/javascript">
+            canvas = document.querySelector("canvas");
+            canvas.width = 1000;
+            canvas.height = 575;
+
+            ctx = canvas.getContext('2d');
+
+            let pontoJogador1 = 0;
+            let pontoJogador2 = 0;
+            let textWinner = "";
+
+            const keyboard = {
+                cima: false,
+                baixo: false,
+                esquerda: false,
+                direita: false
+            };
+
+            const pad = new Pad (ctx, keyboard);
+            const bola = new Bola (ctx, pad);
+            const cpu = new Cpu (ctx, bola);
+            const placar = new Placar (ctx);
+            const verifyWinner = new VerifyWinner (ctx, placar);
+
+            window.addEventListener ('keydown', (event) =>
+                {
+                    if (event.keyCode == 37) { //37 = seta esquerda
+                        keyboard.esquerda = true;
+                    }
+                    if (event.keyCode == 39) { //39 = seta direita
+                        keyboard.direita = true;
+                    }
+                    if (event.keyCode == 38) { //38 = seta cima
+                        keyboard.cima = true;
+                    }
+                    if (event.keyCode == 40) { //40 = seta baixo
+                        keyboard.baixo = true;
+                    }
+                }
+            )
+            window.addEventListener ('keyup', (event) =>
+                {
+                    if (event.keyCode == 37) { //37 = seta esquerda
+                        keyboard.esquerda = false;
+                    }
+                    if (event.keyCode == 39) { //39 = seta direita
+                        keyboard.direita = false;
+                    }
+                    if (event.keyCode == 38) { //38 = seta cima
+                        keyboard.cima = false;
+                    }
+                    if (event.keyCode == 40) { //40 = seta baixo
+                        keyboard.baixo = false;
+                    }
+                }
+            )
+            
+            function game () {
+                ctx.clearRect (0, 0, canvas.width, canvas.height);
+                bola.draw();
+                pad.draw();
+                cpu.draw();
+                placar.draw();
+                verifyWinner.draw();
+                requestAnimationFrame(game)
+            }
+            requestAnimationFrame(game)
+        </script>
+    </body>
+    <footer id="rodape">
+        <span id="span">
+            Feito por Robson Pereira - 2º GJ
+        </span>
+    </footer>
+</html>
+
+<!--
+    |\__/|
+   /     \
+  /_.~ ~,_\
+     \o/
+Bibys
+-->

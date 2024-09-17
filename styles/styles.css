@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap');
+
+body {
+    background-color: #b795be;
+}
+
+canvas {
+    border: 1px solid black;
+    position: absolute;
+    top: 46%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-image: url("../assets/campo.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body #grade_jogo {
+    background-color: #fff;
+}
+
+header {
+    text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin-top: 2;
+    font-size: large;
+}
+
+#rodape {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    margin-top: 665px;
+    text-align: center;
+    font-family: cursive;
+}
+
+footer span {
+    font-size: 1.2em;
+}
+
+#botao1 {
+    position: absolute;
+    top: 50%; 
+    left: 45%; 
+    transform: translate(-50%, -50%);
+    margin-top: 305px;
+}
+
+#botao2 {
+    position: absolute;
+    top: 50%; 
+    left: 55%; 
+    transform: translate(-50%, -50%);
+    margin-top: 305px;
+}
